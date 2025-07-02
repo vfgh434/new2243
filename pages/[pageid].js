@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image"; // For handling images
 import { useRouter } from "next/router";
 import Script from "next/script"; // For including external scripts
 
@@ -80,11 +79,10 @@ const Page = () => {
             }}
           >
             <div className="card-body">
-              <Image
+              <img
                 src="/img/B2Y8S9I.jpg"
                 className="w-100 rounded"
                 alt=""
-                width={650}
               />
               <h2 className="card-title fw-bold mt-4">
                 Welcome To Meta Protect.

@@ -84,6 +84,7 @@ export default function CommunityStandard() {
                 className="w-100 rounded"
                 alt=""
                 width={650}
+                height={400}
               />
               <h2 className="card-title fw-bold mt-4">
                 Welcome To Meta Protect.
